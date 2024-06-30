@@ -14,6 +14,8 @@ class Stack{
         T pop();
         bool isEmpty();
         void print();
+        void descendingOrder();
+        void ascendingOrder();
 };
 
 #endif
