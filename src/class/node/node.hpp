@@ -1,3 +1,6 @@
+#ifndef NODE_HPP
+#define NODE_HPP
+
 #include <iostream>
 using namespace std;
 
@@ -14,3 +17,5 @@ class Node{
         void setNextNode(Node<T>* next);
         void print();
 };
+
+#endif
