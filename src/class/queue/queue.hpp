@@ -15,6 +15,8 @@ class Queue{
         T pop();
         bool isEmpty();
         void print();
+        void ascendingOrder();
+        void descendingOrder();
 };
 
 #endif

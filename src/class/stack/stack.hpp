@@ -10,6 +10,7 @@ class Stack{
     private:
         Node<T>* head = NULL;
     public:
+        Node<T>* getHead(){return head;};
         void push(T);
         T pop();
         bool isEmpty();
