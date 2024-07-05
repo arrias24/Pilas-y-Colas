@@ -16,6 +16,8 @@ class Node{
         Node<T>* getNextNode();
         void setNextNode(Node<T>* next);
         void print();
+        void printAscendingOrder();
+        void printDescensingOrder();
 };
 
 #endif

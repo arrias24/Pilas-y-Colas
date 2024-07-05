@@ -38,67 +38,71 @@ void Stack<T>::print(){
 template <class T>
 void Stack<T>::descendingOrder()
 {
-    T aux;
     Stack stack_temp; //creamos una pila temporal
 
     while (!isEmpty())
     {
-        aux = pop(); //asignamos valor top de la pila principal
+         T aux = pop(); // creamos variable auxiliar y asignamos valor top de la pila principal
 
-        if(stack_temp.isEmpty()) //caso 1 - esta vacia la pila temporal
+        if(stack_temp.isEmpty()) // si la pila temporal esta vacia le insertamos un valor. 
         {
             stack_temp.push(aux);
         }
-        
-        while (!stack_temp.isEmpty() && aux > stack_temp.head->getData()) //caso 2 - no esta vacia la pila y es mayor
-        {
-            push(stack_temp.pop());
-        }
+        else
+        {   
+            while(!stack_temp.isEmpty() && aux > stack_temp.head->getData()) //mientras la pila auxiliar no este vacia y aux sea mayor al head temporal entonces insertamos a la pila principal
+            {
+                push(stack_temp.pop());
+                if(stack_temp.isEmpty()){stack_temp.push(aux);}// comprobamos si quedo vacia
+            }
 
-        if(stack_temp.isEmpty()) // volvemos a comprobar el caso 1
-        {
-            stack_temp.push(aux);
-        }
-
-        while(!stack_temp.isEmpty() && aux < stack_temp.head->getData()) //caso 3 - no esta vacia la pila temporal y es menor
-        {
-            stack_temp.push(aux);
-        }
-        
+            if(aux < stack_temp.head->getData()) //si aux es menor insertamos en la pila temporal
+            {
+                stack_temp.push(aux);
+            }
+        } 
     }
-    stack_temp.print(); //imprimimos pila temporal
+
+    while (!stack_temp.isEmpty()) // vaciamos la cola temporal
+    {
+        push(stack_temp.pop());
+    }
+    
+    print(); //imprimimos
 }
 
 template <class T>
 void Stack<T>::ascendingOrder()
 {
-    T aux;
     Stack stack_temp; //creamos una pila temporal
 
     while (!isEmpty())
     {
-        aux = pop(); //asignamos valor top de la pila principal
+         T aux = pop(); // creamos variable auxiliar y asignamos valor top de la pila principal
 
-        if(stack_temp.isEmpty()) //caso 1 - esta vacia la pila temporal
+        if(stack_temp.isEmpty()) // si la pila temporal esta vacia le insertamos un valor. 
         {
             stack_temp.push(aux);
         }
-        
-        while (!stack_temp.isEmpty() && aux < stack_temp.head->getData()) //caso 2 - no esta vacia la pila y es mayor
-        {
-            push(stack_temp.pop());
-        }
+        else
+        {   
+            while(!stack_temp.isEmpty() && aux < stack_temp.head->getData()) //mientras la pila auxiliar no este vacia y aux sea menor al head temporal entonces insertamos a la pila principal
+            {
+                push(stack_temp.pop());
+                if(stack_temp.isEmpty()){stack_temp.push(aux);}// comprobamos si quedo vacia
+            }
 
-        if(stack_temp.isEmpty()) // volvemos a comprobar el caso 1
-        {
-            stack_temp.push(aux);
-        }
-
-        while(!stack_temp.isEmpty() && aux > stack_temp.head->getData()) //caso 3 - no esta vacia la pila temporal y es menor
-        {
-            stack_temp.push(aux);
-        }
-        
+            if(aux > stack_temp.head->getData()) //si aux es mayor insertamos en la pila temporal
+            {
+                stack_temp.push(aux);
+            }
+        } 
     }
-    stack_temp.print(); //imprimimos pila temporal
+
+    while (!stack_temp.isEmpty()) // vaciamos la cola temporal
+    {
+        push(stack_temp.pop());
+    }
+    
+    print(); //imprimimos
 }

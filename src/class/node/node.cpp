@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./node.hpp"
+#include "../queue/queue.hpp"
 using namespace std;
 
 template <class T>
@@ -36,4 +37,18 @@ void Node<T>::setNextNode(Node<T>* next){
 template <class T>
 void Node<T>::print(){
     cout<<this->data<<endl;
+}
+
+template <class T>
+void Node<T>::printAscendingOrder()
+{
+    data.ascendingOrder();
+    data.print();
+}
+
+template <class T>
+void Node<T>::printDescensingOrder()
+{
+    data.descendingOrder();
+    data.print();
 }
