@@ -48,70 +48,78 @@ void Queue<T>::print(){
 template <class T>
 void Queue<T>::descendingOrder()
 {
-    Stack<T> stack_temp; //creamos una pila auxiliar
+    Stack<T> stack_temp; // creamos una pila auxiliar
 
     while (!isEmpty())
     {
-        if(stack_temp.isEmpty()) //si la cola temporal esta vacia se inserta un elemento
+        if (stack_temp.isEmpty()) // si la pila temporal está vacía, se inserta un elemento
         {
             stack_temp.push(pop());
         }
         else
         {
-            if(head->getData() > stack_temp.getHead()->getData()) // si el head de la cola es mayor al head de la pila se inserta un elemento a la pila
+            if (head->getData() > stack_temp.getHead()->getData()) // si el head de la cola es mayor al head de la pila, se inserta un elemento en la pila
             {
                 stack_temp.push(pop());
             }
             else
             {
-                while (head->getData() < stack_temp.getHead()->getData()) // mientras el head de la cola sea menor al head de la pila insertamos elemento en la cola.
+                // Movemos elementos de la pila temporal de vuelta a la cola hasta encontrar la posición adecuada
+                while (!stack_temp.isEmpty() && head->getData() < stack_temp.getHead()->getData())
                 {
                     push(stack_temp.pop());
-                    if(stack_temp.isEmpty()){stack_temp.push(pop());} //comprobamos si esta vacia
                 }
+                stack_temp.push(pop());
             }
         }
     }
-    while (!stack_temp.isEmpty()) // pasamos los elementos de la pila a la cola
+
+    // Pasamos los elementos de la pila de vuelta a la cola en orden
+    while (!stack_temp.isEmpty())
     {
         push(stack_temp.pop());
     }
-    print(); //imprimimos la cola
+
+    print(); // imprimir la cola
 }
 
 
 template <class T>
 void Queue<T>::ascendingOrder()
 {
-    Stack<T> stack_temp; //creamos una pila auxiliar
+    Stack<T> stack_temp; // creamos una pila auxiliar
 
     while (!isEmpty())
     {
-        if(stack_temp.isEmpty()) //si la pila esta vacia se inserta un elemento
+        if (stack_temp.isEmpty()) // si la pila temporal está vacía, se inserta un elemento
         {
             stack_temp.push(pop());
         }
         else
         {
-            if(head->getData() < stack_temp.getHead()->getData()) // si el head de la cola es menor al head de la pila se inserta un elemento a la pila
+            if (head->getData() < stack_temp.getHead()->getData()) // si el head de la cola es menor al head de la pila, se inserta un elemento en la pila
             {
                 stack_temp.push(pop());
             }
             else
             {
-                while (head->getData() > stack_temp.getHead()->getData()) // mientras el head de la cola sea mayor al head de la pila insertamos elemento en la cola.
+                // Mover elementos de la pila temporal de vuelta a la cola hasta encontrar la posición adecuada
+                while (!stack_temp.isEmpty() && head->getData() > stack_temp.getHead()->getData())
                 {
                     push(stack_temp.pop());
-                    if(stack_temp.isEmpty()){stack_temp.push(pop());} //comprobamos si esta vacia
                 }
+                stack_temp.push(pop());
             }
         }
     }
-    while (!stack_temp.isEmpty()) // pasamos los elementos de la pila a la cola
+
+    // Pasar los elementos de la pila de vuelta a la cola en orden
+    while (!stack_temp.isEmpty())
     {
         push(stack_temp.pop());
     }
-    print(); //imprimimos la cola
+
+    print(); // imprimir la cola
 }
 
 
